@@ -5,9 +5,48 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <title>Task Manager</title>
 </head>
 <body>
+
+  <div id="header" class="main-divs">Task Manager</div>
+
+  <div id="task-selector" class="main-divs">
+
+    <div class="task-options">
+      <i class="material-icons">sunny</i>
+      <button class="link">All Tasks</button>
+    </div>
+
+    <div class="task-options">
+      <i class="material-icons">today</i>
+      <button class="link">Today</button>
+    </div>
+
+    <div class="task-options">
+      <i class="material-icons">calendar_month</i>
+      <button class="link">This Week</button>
+    </div>
+
+    <div class="task-options">
+      <i class="material-icons">star</i>
+      <button class="link">Starred</button>
+    </div>
+  
+  </div>
+
+  <div id="tasks" class="main-divs">
+    <button id="add-tasks"> + ADD TASK</button>
+  </div>
+
+  <div id="projects" class="main-divs">
+    <h3>Projects</h3>
+    <button id="add-project">+ ADD PROJECT</button>
+  </div>
+
+  <div id="footer" class="main-divs">Copyright 2022 olvbrntly</div>
+
   <script src="main.js"></script>  
 </body>
 </html>
