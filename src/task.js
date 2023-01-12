@@ -1,22 +1,30 @@
 // going to handle a task
 
 
-const newTask = (title, description, dueDate, starred, completed) => {
-    const getTitle = () => title;
-    const getDescription = () => description;
-    const getDueDate = () => dueDate;
-    const getStarred = () => starred;
-    const getCompleted = () => completed;
+function createNewTask() {
 
-        return{
-            getTitle,
-            getDescription,
-            getDueDate,
-            getStarred,
-            getCompleted,
-        }
+    let Tasks = [];
+
+    const newTask = (title, description, dueDate, starred, completed) => {
+       
+       
+    
+            return{
+                title,
+                description,
+                dueDate,
+                starred,
+                completed,
+            }
+    
+    }
+
+
+
+
 
 }
+
 
 // create a task
 
