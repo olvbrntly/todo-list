@@ -1,11 +1,20 @@
 // going to handle a task
 
 
-const newTask = (title, description, dueDate, starred) => {
+const newTask = (title, description, dueDate, starred, completed) => {
+    const getTitle = () => title;
+    const getDescription = () => description;
+    const getDueDate = () => dueDate;
+    const getStarred = () => starred;
+    const getCompleted = () => completed;
 
-    
-
-
+        return{
+            getTitle,
+            getDescription,
+            getDueDate,
+            getStarred,
+            getCompleted,
+        }
 
 }
 

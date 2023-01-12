@@ -19,30 +19,42 @@ function addTasktoDOM(){
     rightDiv.setAttribute('class','task-rightDiv');
     leftDiv.setAttribute('class','task-leftDiv');
 
+    //left div elements
+    const status = document.createElement('button');
+    status.setAttribute('class', 'material-icons');
+    status.classList.add('status');
+    status.textContent = 'radio_button_unchecked'
 
+    const taskInfo = document.createElement('Div');
     const title = document.createElement('div');
     title.textContent = "My First Task";
 
     const description =document.createElement('div');
     description.textContent = "this is the description"
 
-    const starred = document.createElement('span');
+    // right div elements
+    const starred = document.createElement('button');
     const dueDate = document.createElement('div');
-    const more = document.createElement('span');
+    const more = document.createElement('button');
 
     title.setAttribute('class','task-title');
 
     starred.setAttribute('class', 'material-icons');
-    starred.setAttribute('id','starred');
+    starred.classList.add('starred');
 
     more.setAttribute('class', 'material-icons');
+    more.setAttribute('id','more');
 
     starred.textContent = 'star'
     dueDate.textContent = 'due!'
     more.textContent = 'more_vert';
     
-    leftDiv.appendChild(title);
-    leftDiv.appendChild(description);
+    taskInfo.appendChild(title);
+    taskInfo.appendChild(description);
+
+
+    leftDiv.appendChild(status)
+    leftDiv.appendChild(taskInfo);
 
     rightDiv.appendChild(starred);
     rightDiv.appendChild(dueDate);
