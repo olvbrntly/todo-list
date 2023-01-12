@@ -83,10 +83,17 @@ body{
     grid-column: 1/4;
     display:flex;
     justify-content: space-between;
-    margin:0px 80px 0px 80px;
+    margin:0px 80px 5px 80px;
     background-color: #e7e7e7;
     border-radius:10px;
     padding:10px;
+}
+
+.task-leftDiv{
+    display:flex;
+    flex-direction:row;
+    gap:20px;
+    align-items: center;
 }
 
 .task-title{
@@ -101,10 +108,29 @@ body{
     align-items: center;
 }
 
-.starred{
-    color:yellow;
+/* buttons on the individal task */
+.status{
+    border:none;
+    background-color: #e5e5e5;
 }
 
+#starred{
+    border:none;
+    background-color: #e5e5e5;
+}
+
+#more{
+    border:none;
+    background-color: #e5e5e5;
+}
+.starred{
+
+    border:none;
+    background-color: #e5e5e5;
+}
+.starclicked{
+    color:yellow;
+}
 /* PROJECTS-------------------------------------------------- */
 
 #projects{
