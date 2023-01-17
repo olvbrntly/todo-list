@@ -108,6 +108,13 @@ body{
     align-items: center;
 }
 
+/* NEW TASK FORM------------------------------------------------- */
+
+.form{
+    position:relative;
+}
+
+
 /* buttons on the individal task */
 .status{
     border:none;
