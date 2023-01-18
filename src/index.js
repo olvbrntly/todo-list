@@ -1,104 +1,72 @@
 import addTasktoDOM from "./site";
 import getNewTask from './task';
-
+import createForm from "./form";
 import Task from './task';
 import createNewTask from './task'
+
 //puts the whole thing together
+let allTasks = [];
+let todaysTasks = [];
+let thisWeeksTasks = [];
+let starredTasks = [];
 
-let taskArray = [];
+const newTask = new createNewTask('study','description!',true,'today');
+const myTask = new createNewTask('shop','get grioceries',false,'tomorrow');
+const yourTask = new createNewTask('work','go to work',true,'this weekend');
 
-let study = new Task('study bio', 'bio study description','true','today');
 
-function createNewTask(title, description, star, date){
-    let task = new Task(title, description, star, date);
+function makeToDo(task){
 
-    taskArray.push(task);
-    return taskArray
+    if(task.getStar() == true){
+        starredTasks.push(task)
+    }
+
+    if(task.getDate() ==='today'){
+        todaysTasks.push(task)
+    }
+
+    allTasks.push(task);
+
+    return [allTasks,todaysTasks,starredTasks];
+
 }
 
-console.log(study.getTitle());
-console.log(study);
-taskArray.push(study);
-console.log('in the array');
-console.log(taskArray[0].getDescription());
-console.log(taskArray);
+makeToDo(newTask);
+makeToDo(myTask);
+makeToDo(yourTask);
 
-console.log('after new task')
-createNewTask('study math','im gonna study math','true','tomorrow');
-console.log(taskArray[1].getDescription());
+console.log(allTasks);
+console.log(starredTasks);
+console.log(todaysTasks);
 
 
-
+let addTaskBtn = document.getElementById("add-tasks");
+addTaskBtn.addEventListener('click', createForm);
 
 
 
-//whichever button (projects)is active is the array that is populated.
-//every task is put into the all task array
-//if a task has star = true it is put in the starred array
-//if a task id due today it is put in the due today array
-//if a task is due this week it is put into the due today array.
-//creating  project creates a new array
-//if a task is added while project array is active it is added to that projects array
-
-//which ever project is active the Dom is re-rendered to include that array.
-
-//when you click add task
-//a form appears
-//the user inputs information
-//that info is saved into the object, the new object based on the task class,
-//that object is saved into the relevant array
-
-
-//when you click add project
-//a form opens
-//user fills out the project name
-//a new array is formed to hold tasks
+// allTasks.push(newTask);
+// console.log(allTasks[0].getTitle());
+// console.log(allTasks)
+// console.log(newTask.getDate());
 
 
 
+//when the add task button is clicked a form pops up
+//user fills out form
+//form info is used to dunamically fill out the createNewTask(info here)
+//that new task is pushed to the taskArray Array
+//that task is assigned an id which is equal to its index in the array
+//if starred is true task is pushed to starred array
+//if due date is today, task is pushed to the today array
+//is due is sometime this week then task is pushed to this week array
 
+//by default all tasks are renderd to dom from the taskArray
+//if all tasks is clicked taskArray is displayed on the dom
 
+//if today is clicked dom display comes from the today array
+//is this week is clicked dom display comes from the this week array
+//if starred is clicked dom display comes from the starred array
 
+//project functionality will be added after
 
-
-
-
-
-
-
-
-
-
-// event listener for each button on project
-
-// all tasks button
-
-
- 
-// today button
-
-// this week button
-
-// starred button
-
-// starred.forEach(task=>{
-//    task.addEventListener('click',(e) =>{
-//       e.target.classList.toggle('starclicked')
-//       })
-
-// });
-// add project button
-
-// add task button
-
-//complete task button
-// completed.forEach(task=>{
-//    task.addEventListener('click',(e) =>{
-//       if(e.target.textContent === 'radio_button_unchecked'){
-//          e.target.textContent ='radio_button_checked';
-//       }
-//       else{
-//          e.target.textContent = 'radio_button_unchecked'
-//       }
-// })
-// });
