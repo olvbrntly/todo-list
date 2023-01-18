@@ -24,19 +24,19 @@ export default class Task{
     }
 
     //get info functions
-    getTitle(title) {
+    getTitle() {
         return this.title
     }
 
-    getDescription(description){
+    getDescription(){
         return this.description
     }
     
-    getStar(star){
+    getStar(){
         return this.star
     }
 
-    getDate(date){
+    getDate(){
         return this.date
     }  
 
