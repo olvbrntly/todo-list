@@ -3,19 +3,20 @@ import getNewTask from './task';
 import createForm from "./form";
 import Task from './task';
 import createNewTask from './task'
+import DOMEvents from './DOMEvents'
 
 //puts the whole thing together
+
 let allTasks = [];
 let todaysTasks = [];
 let thisWeeksTasks = [];
 let starredTasks = [];
 
-const newTask = new createNewTask('study','description!',true,'today');
-const myTask = new createNewTask('shop','get grioceries',false,'tomorrow');
-const yourTask = new createNewTask('work','go to work',true,'this weekend');
+// const newTask = new createNewTask('study','description!',true,'today');
+// const myTask = new createNewTask('shop','get grioceries',false,'tomorrow');
+// const yourTask = new createNewTask('work','go to work',true,'this weekend');
 
-
-function makeToDo(task){
+export function makeToDo(task){
 
     if(task.getStar() == true){
         starredTasks.push(task)
@@ -28,20 +29,19 @@ function makeToDo(task){
     allTasks.push(task);
 
     return [allTasks,todaysTasks,starredTasks];
-
 }
 
-makeToDo(newTask);
-makeToDo(myTask);
-makeToDo(yourTask);
+document.addEventListener('DOMContentLoaded', () =>{
+    DOMEvents();
+    console.log('DOM thing')
+})
+
 
 console.log(allTasks);
 console.log(starredTasks);
 console.log(todaysTasks);
 
 
-let addTaskBtn = document.getElementById("add-tasks");
-addTaskBtn.addEventListener('click', createForm);
 
 
 
