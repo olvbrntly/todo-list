@@ -9,6 +9,8 @@
 
 function addTasktoDOM(){
     const taskBox = document.getElementById('tasks');
+    const titleValue = document.getElementById('task-name').value;
+    const descriptionValue = document.getElementById('task-description').value;
 
     // make a new task
     const taskContainter = document.createElement('div');
@@ -27,10 +29,10 @@ function addTasktoDOM(){
 
     const taskInfo = document.createElement('Div');
     const title = document.createElement('div');
-    title.textContent = "My First Task";
+    title.textContent = titleValue;
 
     const description =document.createElement('div');
-    description.textContent = "this is the description"
+    description.textContent = descriptionValue;
 
     // right div elements
     const starred = document.createElement('button');
