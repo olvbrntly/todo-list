@@ -1,3 +1,7 @@
+*{
+    box-sizing:border-box;
+}
+
 body{
     display:grid;
     grid-template-columns: 1fr 3fr;
@@ -68,6 +72,7 @@ body{
     border-radius:10px;
     grid-column: 2/3;
     margin-bottom: 10px;
+    overflow: hidden;
 }
 
 #add-tasks:active {
@@ -111,7 +116,14 @@ body{
 /* NEW TASK FORM------------------------------------------------- */
 
 .form{
-    position:relative;
+    position:absolute;
+    border:2px solid red;
+    height:400px;
+    width:400px;    
+}
+
+#task-submit-btn{
+    color:red;
 }
 
 
