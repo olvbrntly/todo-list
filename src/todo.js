@@ -6,3 +6,4 @@ export function createNewTask(title, description, star, date){
     console.log(task)
     return task;
 }
+

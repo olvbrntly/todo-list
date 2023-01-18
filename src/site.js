@@ -18,6 +18,8 @@ function addTasktoDOM(){
     const rightDiv = document.createElement('div');
     
     taskContainter.setAttribute('class','task');
+    taskContainter.setAttribute('id','task');
+
     rightDiv.setAttribute('class','task-rightDiv');
     leftDiv.setAttribute('class','task-leftDiv');
 

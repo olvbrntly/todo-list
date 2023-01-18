@@ -1,5 +1,5 @@
 
-class Project{
+export default class Project{
     constructor(name){
         this.name = name
         this.tasks =[]
@@ -9,8 +9,8 @@ class Project{
         this.name = name
         }
 
-    setTasks(tasks){
-        this.tasks= tasks
+    setTask(task){
+        this.tasks.push(task);
     }
 
     getName(){
@@ -21,7 +21,7 @@ class Project{
         return this.tasks
     }
 
-    getTask(i){
+    getTaskName(i){
         return this.task[i].getTitle()
     }
 }

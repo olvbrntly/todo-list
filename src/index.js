@@ -7,29 +7,12 @@ import DOMEvents from './DOMEvents'
 
 //puts the whole thing together
 
-let allTasks = [];
-let todaysTasks = [];
-let thisWeeksTasks = [];
-let starredTasks = [];
 
 // const newTask = new createNewTask('study','description!',true,'today');
 // const myTask = new createNewTask('shop','get grioceries',false,'tomorrow');
 // const yourTask = new createNewTask('work','go to work',true,'this weekend');
 
-export function makeToDo(task){
 
-    if(task.getStar() == true){
-        starredTasks.push(task)
-    }
-
-    if(task.getDate() ==='today'){
-        todaysTasks.push(task)
-    }
-
-    allTasks.push(task);
-
-    return [allTasks,todaysTasks,starredTasks];
-}
 
 document.addEventListener('DOMContentLoaded', () =>{
     DOMEvents();
@@ -37,9 +20,6 @@ document.addEventListener('DOMContentLoaded', () =>{
 })
 
 
-console.log(allTasks);
-console.log(starredTasks);
-console.log(todaysTasks);
 
 
 

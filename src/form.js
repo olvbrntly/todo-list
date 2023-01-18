@@ -9,6 +9,7 @@ function createForm(){
     form.setAttribute('method','post');
     form.setAttribute('action','javascript:submit()');
     form.classList.add('form');
+    form.setAttribute('id','form');
 
     //creates title input
     const title = document.createElement('input');
@@ -35,5 +36,11 @@ function createForm(){
 
 }
 
+function closeForm(){
+    const taskBox = document.getElementById('tasks');
+    const form = document.getElementById('form');
+    taskBox.removeChild(form);
+    console.log('close');
+}
 
-export default createForm
+export {createForm, closeForm};
