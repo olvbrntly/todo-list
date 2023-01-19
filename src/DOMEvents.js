@@ -1,7 +1,7 @@
  import {createForm, closeForm} from './form';
  import { createNewTask, makeToDo} from './todo';
  import Project from './project';
- import {addTasktoDOM, clearDOM} from './site';
+ import {addTasktoDOM, clearDOM, renderDOM, removeAddBtn} from './site';
  
  // adds event listeners to whole document to account for dynamically added elements
 const DOMEvents = () => {
@@ -34,7 +34,7 @@ const events =(e) => {
         allTasks.addTask(newTask);
         // console.log(allTasks.getTasks());
         // console.log(newTask.getTitle());
-        addTasktoDOM(newTask);
+        //addTasktoDOM(newTask);
         closeForm();
         
         if(newTask.getStar() == true){
@@ -55,22 +55,15 @@ const events =(e) => {
 
     if(e.target.id == 'All-Task-Link'){
         clearDOM();
-        console.log('link');
-        let array = allTasks.getTasks();
-        console.log(array);
-        for(let i = 0; i < array.length; i++){
-            addTasktoDOM();
-        };
+        const btn = document.getElementById('add-tasks');
+        btn.style.visibility = 'visible'
+        renderDOM(allTasks);
     }
 
     if(e.target.id == 'Starred-Task-Link'){
         clearDOM();
-        console.log('link');
-        let array = starredTasks.getTasks();
-        console.log(array);
-        for(let i = 0; i < array.length; i++){
-            addTasktoDOM();
-        };
+        removeAddBtn();
+        renderDOM(starredTasks);
     }
 
 

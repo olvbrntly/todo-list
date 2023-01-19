@@ -1,11 +1,9 @@
-function addTasktoDOM(){
+function addTasktoDOM(taskTitle, taskDescription){
     const taskBox = document.getElementById('tasks');
-    const titleValue = document.getElementById('task-name').value;
-    const descriptionValue = document.getElementById('task-description').value;
-
+   
     // make a new task
     const taskContainter = document.createElement('div');
-    const leftDiv = document.createElement('div');
+    const leftDiv = document.createElement('div'); 
     const rightDiv = document.createElement('div');
     
     taskContainter.setAttribute('class','task');
@@ -22,10 +20,10 @@ function addTasktoDOM(){
 
     const taskInfo = document.createElement('Div');
     const title = document.createElement('div');
-    title.textContent = titleValue;
+    title.textContent = `${taskTitle}`;
 
     const description =document.createElement('div');
-    description.textContent = descriptionValue;
+    description.textContent = taskDescription;
 
     // right div elements
     const starred = document.createElement('button');
@@ -60,12 +58,30 @@ function addTasktoDOM(){
 
     taskBox.appendChild(taskContainter);
 
-
-    console.log('works')
-    
 };
 
-export default addTasktoDOM;
+function clearDOM(){
+    const taskBox = document.getElementById('tasks');
+    while(taskBox.lastChild.id != 'add-tasks'){
+        taskBox.removeChild(taskBox.lastChild);
+    }
+}
+
+function removeAddBtn(){
+    const btn = document.getElementById('add-tasks');
+        btn.style.visibility = 'hidden'
+}
+
+function renderDOM(project){
+  let array = project.getTasks();
+        console.log('link');
+        console.log(array);
+        for(let i = 0; i < array.length; i++){
+            addTasktoDOM(array[i].getTitle(), array[i].getDescription());
+        };
+
+    }
+export {addTasktoDOM, clearDOM, renderDOM, removeAddBtn};
 
 // move a task to a project
 
