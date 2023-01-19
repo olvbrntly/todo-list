@@ -1,4 +1,4 @@
-
+import { addTasktoDOM } from "./site";
 export default class Project{
     constructor(name){
         this.name = name
@@ -22,7 +22,8 @@ export default class Project{
     }
 
     addTask(newTask){
-
         this.tasks.push(newTask);
     }
+
+   
 }

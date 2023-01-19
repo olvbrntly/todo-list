@@ -142,13 +142,13 @@ body{
     border:none;
     background-color: #e5e5e5;
 }
-.starred{
+.star{
 
     border:none;
     background-color: #e5e5e5;
 }
 .starclicked{
-    color:yellow;
+    color:rgb(255, 255, 10);
 }
 /* PROJECTS-------------------------------------------------- */
 

@@ -33,7 +33,8 @@ function addTasktoDOM(taskTitle, taskDescription){
     title.setAttribute('class','task-title');
 
     starred.setAttribute('class', 'material-icons');
-    starred.classList.add('starred');
+    starred.classList.add('star');
+    
 
     more.setAttribute('class', 'material-icons');
     more.setAttribute('id','more');
@@ -73,7 +74,8 @@ function removeAddBtn(){
 }
 
 function renderDOM(project){
-  let array = project.getTasks();
+    clearDOM()
+    let array = project.getTasks();
         console.log('link');
         console.log(array);
         for(let i = 0; i < array.length; i++){
@@ -81,7 +83,7 @@ function renderDOM(project){
         };
 
     }
-export {addTasktoDOM, clearDOM, renderDOM, removeAddBtn};
+export {addTasktoDOM, renderDOM, removeAddBtn};
 
 // move a task to a project
 
