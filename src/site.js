@@ -1,12 +1,3 @@
-// going to handle the dom changes
-
-// remove a task when deletes
-
-// update a tasks content when edited
-
-// make a task appear when added
-// hard coding a fake task first
-
 function addTasktoDOM(){
     const taskBox = document.getElementById('tasks');
     const titleValue = document.getElementById('task-name').value;
