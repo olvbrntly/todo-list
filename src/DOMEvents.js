@@ -9,13 +9,13 @@ const DOMEvents = () => {
     d.addEventListener('click', events);
  }
 
+ //Project Arrays- should probably be in something but for now they are here
+ const allTasks = new Project('allTasks');
+ const todaysTasks = new Project('todaysTasks');
+ const thisWeeksTasks = new Project('thisWeeksTasks');
+ const starredTasks = new Project('starredTasks');
 //actual events based on id 
 const events =(e) => {
-
-    const allTasks = new Project(allTasks);
-    const todaysTasks = new Project(todaysTasks);
-    const thisWeeksTasks = new Project(thisWeeksTasks);
-    const starredTasks = new Project(starredTasks);
 
     
     if(e.target.id == "add-tasks"){
@@ -30,11 +30,12 @@ const events =(e) => {
         let title = document.getElementById('task-name').value;
         let description = document.getElementById('task-description').value;
         const newTask = new createNewTask(title, description, false,'today');
-        console.log(newTask.getTitle());
-        allTasks.setTask(newTask);
-        addTasktoDOM(newTask)
-        closeForm();
+        allTasks.addTask(newTask);
         console.log(allTasks.getTasks());
+        console.log(newTask.getTitle());
+        addTasktoDOM(newTask);
+        closeForm();
+        
         
 
         if(newTask.getStar() == true){
