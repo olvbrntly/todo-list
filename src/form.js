@@ -22,6 +22,11 @@ function createForm(){
     description.setAttribute('name','task-description');
     description.setAttribute('id','task-description');
 
+    const star = document.createElement('input');
+    star.setAttribute('type','checkbox');
+    star.setAttribute('name','task-star');
+    star.setAttribute('id','task-star');
+
     const formSubmit = document.createElement('submit');
     formSubmit.setAttribute('value','submit');
     formSubmit.setAttribute("id","task-submit-btn");
@@ -30,9 +35,9 @@ function createForm(){
     //attaching elements to form
     form.appendChild(title);
     form.appendChild(description);
+    form.appendChild(star);
     form.appendChild(formSubmit);
     taskBox.appendChild(form);
-
 
 }
 
