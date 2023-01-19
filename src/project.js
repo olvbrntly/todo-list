@@ -10,7 +10,7 @@ export default class Project{
         }
 
     setTask(task){
-        this.tasks.push(task);
+        this.tasks.push(JSON.stringify(task));
     }
 
     getName(){
@@ -21,7 +21,8 @@ export default class Project{
         return this.tasks
     }
 
-    getTaskName(i){
-        return this.task[i].getTitle()
+    addTask(newTask){
+
+        this.tasks.push(newTask);
     }
 }
