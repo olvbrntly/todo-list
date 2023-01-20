@@ -118,13 +118,47 @@ body{
 .form{
     position:absolute;
     border:2px solid red;
-    height:400px;
-    width:400px;    
+    height:500px;
+    width:400px; 
+    display:flex;
+    flex-direction: column;
+    gap:50px;
+    background-color:rgb(212, 212, 212)
+    
+}
+
+#task-name{
+color:green;
+}
+
+#task-description{
+    color:blue;
+}
+
+#task-date{
+    color:orange;
 }
 
 #task-submit-btn{
     color:red;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /* buttons on the individal task */
