@@ -13,7 +13,6 @@ const DOMEvents = () => {
  const allTasks = new Project('allTasks');
  const todaysTasks = new Project('todaysTasks');
  const thisWeeksTasks = new Project('thisWeeksTasks');
- const starredTasks = new Project('starredTasks');
 
 //actual events based on id 
 const events =(e) => {
@@ -30,22 +29,17 @@ const events =(e) => {
         e.preventDefault();
         let title = document.getElementById('task-name').value;
         let description = document.getElementById('task-description').value;
-        let star = document.getElementById('task-star').checked;
-        const newTask = new createNewTask(title, description, star,'today');
+       
+        const newTask = new createNewTask(title, description,'today');
         allTasks.addTask(newTask);
        
         closeForm();
         renderDOM(allTasks);
         
-        if(newTask.getStar() == true){
-            starredTasks.addTask(newTask);
-        }
-
         if(newTask.getDate() ==='today'){
             todaysTasks.addTask(newTask);
         }
      
-        console.log('starred'+ starredTasks.getTasks());
         console.log(todaysTasks.getTasks());
 
         let btn = document.getElementById('add-tasks');
@@ -58,12 +52,6 @@ const events =(e) => {
         btn.style.visibility = 'visible'
         renderDOM(allTasks);
     }
-
-    if(e.target.id == 'Starred-Task-Link'){
-        removeAddBtn();
-        renderDOM(starredTasks);
-    }
-
     if(e.target.id == 'Today-Task-Link'){
         removeAddBtn();
         renderDOM(todaysTasks);
@@ -74,14 +62,6 @@ const events =(e) => {
         renderDOM(thisWeeksTasks);
     }
 
-    if(e.target.classList.contains('star')){
-       if(e.target.classList.contains('starclicked')){
-        e.target.classList.remove('starclicked')
-       }
-       else{
-        e.target.classList.add('starclicked')
-       }
-    }
     
 
 }

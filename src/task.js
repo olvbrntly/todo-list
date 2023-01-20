@@ -1,8 +1,7 @@
 export default class Task{
-    constructor(title, description, star, date,){
+    constructor(title, description, date,){
         this.title = title,
         this.description = description,
-        this.star = Boolean(star);
         this.date= date
     }
 
@@ -13,10 +12,6 @@ export default class Task{
 
     setDescription(description){
         this.description = description
-    }
-
-    setStar(star){
-        this.star = star
     }
 
     setDate(date){
@@ -30,10 +25,6 @@ export default class Task{
 
     getDescription(){
         return this.description
-    }
-    
-    getStar(){
-        return this.star
     }
 
     getDate(){

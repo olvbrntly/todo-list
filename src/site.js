@@ -1,4 +1,4 @@
-function addTasktoDOM(taskTitle, taskDescription){
+function addTasktoDOM(taskTitle, taskDescription, taskStar){
     const taskBox = document.getElementById('tasks');
    
     // make a new task
@@ -26,20 +26,12 @@ function addTasktoDOM(taskTitle, taskDescription){
     description.textContent = taskDescription;
 
     // right div elements
-    const starred = document.createElement('button');
     const dueDate = document.createElement('div');
     const more = document.createElement('button');
+    more.setAttribute('class', 'material-icons');
+    more.classList.add('more');
 
     title.setAttribute('class','task-title');
-
-    starred.setAttribute('class', 'material-icons');
-    starred.classList.add('star');
-    
-
-    more.setAttribute('class', 'material-icons');
-    more.setAttribute('id','more');
-
-    starred.textContent = 'star'
     dueDate.textContent = 'due!'
     more.textContent = 'more_vert';
     
@@ -50,7 +42,6 @@ function addTasktoDOM(taskTitle, taskDescription){
     leftDiv.appendChild(status)
     leftDiv.appendChild(taskInfo);
 
-    rightDiv.appendChild(starred);
     rightDiv.appendChild(dueDate);
     rightDiv.appendChild(more);
 
