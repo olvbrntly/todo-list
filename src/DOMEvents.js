@@ -17,13 +17,14 @@ const DOMEvents = () => {
 //actual events based on id 
 const events =(e) => {
 
-    
+    //+Add Task button
     if(e.target.id == "add-tasks"){
         console.log('added')
         createForm();
         e.target.disabled = true;
     }
 
+    //submit button on form to make new task
     if(e.target.id == 'task-submit-btn'){
         console.log('submit');
         e.preventDefault();
@@ -47,19 +48,33 @@ const events =(e) => {
    
     }
 
+    //All Tasks link on side panel
     if(e.target.id == 'All-Task-Link'){
         const btn = document.getElementById('add-tasks');
         btn.style.visibility = 'visible'
         renderDOM(allTasks);
     }
+
+    //Todays tasks link on side panel
     if(e.target.id == 'Today-Task-Link'){
         removeAddBtn();
         renderDOM(todaysTasks);
     }
 
+    //this weeks task link on side panel
     if(e.target.id == 'This-Week-Task-Link'){
         removeAddBtn();
         renderDOM(thisWeeksTasks);
+    }
+
+    //checks off task - radio btn on side of individual task
+    if(e.target.classList.contains('status')){
+        if(e.target.textContent == 'radio_button_unchecked'){
+            e.target.textContent = 'radio_button_checked'
+        }
+        else{
+            e.target.textContent = 'radio_button_unchecked'
+        }
     }
 
     
