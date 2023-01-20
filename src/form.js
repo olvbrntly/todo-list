@@ -17,11 +17,19 @@ function createForm(){
     title.setAttribute('name','task-name');
     title.setAttribute('id','task-name');
 
+    //creates description input
     const description = document.createElement('input');
     description.setAttribute('type','text');
     description.setAttribute('name','task-description');
     description.setAttribute('id','task-description');
 
+    //creates date input
+    const date = document.createElement('input');
+    date.setAttribute('type','date');
+    date.setAttribute('name','task-date');
+    date.setAttribute('id','task-date');
+
+    //creates submit button
     const formSubmit = document.createElement('submit');
     formSubmit.setAttribute('value','submit');
     formSubmit.setAttribute("id","task-submit-btn");
@@ -30,6 +38,7 @@ function createForm(){
     //attaching elements to form
     form.appendChild(title);
     form.appendChild(description);
+    form.appendChild(date);
     form.appendChild(formSubmit);
     taskBox.appendChild(form);
 
