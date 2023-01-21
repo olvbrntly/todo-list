@@ -118,32 +118,44 @@ body{
 .form{
     position:absolute;
     border:2px solid red;
-    height:500px;
+    height:400px;
     width:400px; 
     display:flex;
     flex-direction: column;
-    gap:50px;
-    background-color:rgb(212, 212, 212)
-    
-}
-
-#task-name{
-color:green;
-}
-
-#task-description{
-    color:blue;
-}
-
-#task-date{
-    color:orange;
+    gap:30px;
+    background-color:rgb(212, 212, 212);
+    top: calc(50vh - (400px / 2));
+    left: calc(63.5vw - (400px / 2));
+    padding: 10px;
 }
 
 #task-submit-btn{
-    color:red;
+    margin-left:calc(50% - (150px/2));
+    text-align: center;
+    font-size:30px;
+    border:1px solid black;
+    width:150px;
 }
 
+#task-submit-btn:active {
+    background: #e5e5e5;
+    -webkit-box-shadow: inset 0px 0px 5px #c1c1c1;
+       -moz-box-shadow: inset 0px 0px 5px #c1c1c1;
+            box-shadow: inset 0px 0px 5px #c1c1c1;
+     outline: none;
+}
 
+.input-div{
+    font-size:35px;
+    display:flex;
+    flex-direction: column;
+    gap:5px;
+}
+
+.input-div input{
+    height:30px;
+    font-size: 15px;
+}
 
 
 
