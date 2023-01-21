@@ -117,7 +117,8 @@ body{
 
 .form{
     position:absolute;
-    border:2px solid red;
+    border:2px solid black;
+    border-radius: 5px;
     height:400px;
     width:400px; 
     display:flex;

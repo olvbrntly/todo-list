@@ -26,10 +26,14 @@ const events =(e) => {
 
     //submit button on form to make new task
     if(e.target.id == 'task-submit-btn'){
-        console.log('submit');
         e.preventDefault();
         let title = document.getElementById('task-name').value;
         let description = document.getElementById('task-description').value;
+
+        if (title == ''){
+            alert('please include a title');
+            return;
+        }
        
         const newTask = new createNewTask(title, description,'today');
         allTasks.addTask(newTask);
