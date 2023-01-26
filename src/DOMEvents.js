@@ -2,7 +2,7 @@
  import { createNewTask} from './todo';
  import Project from './project';
  import {renderDOM, removeAddBtn} from './site';
- import {format} from 'date-fns';
+ import {format, getTimezoneOffset} from 'date-fns';
  
  // adds event listeners to whole document to account for dynamically added elements
 const DOMEvents = () => {
@@ -30,24 +30,28 @@ const events =(e) => {
         let title = document.getElementById('task-name').value;
         let description = document.getElementById('task-description').value;
         let datePicker = document.getElementById('task-date');
-        let date = format(new Date(datePicker.value), 'MM/dd/yyyy');
+        let date = new Date(datePicker.value);
+        console.log(date.getTimezoneOffset());
+        let newDate = new Date(date + date.getTimezoneOffset());
+
+        let finalDate = format(newDate,'MM/dd/yyyy');
 
         if (title == ''){
             alert('please include a title');
             return;
         }
        
-        const newTask = new createNewTask(title, description, date);
+        const newTask = new createNewTask(title, description, finalDate);
         allTasks.addTask(newTask);
        
         closeForm();
         renderDOM(allTasks);
         
-        if(newTask.getDate() ==='today'){
-            todaysTasks.addTask(newTask);
-        }
+        // if(newTask.getDate() ==='today'){
+        //     todaysTasks.addTask(newTask);
+        // }
      
-        console.log(todaysTasks.getTasks());
+        // console.log(todaysTasks.getTasks());
 
         let btn = document.getElementById('add-tasks');
         btn.disabled = false;

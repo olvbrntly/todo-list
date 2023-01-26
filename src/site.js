@@ -20,7 +20,7 @@ function addTasktoDOM(taskTitle, taskDescription, taskDate){
     status.classList.add('status');
     status.textContent = 'radio_button_unchecked'
 
-    const taskInfo = document.createElement('Div');
+    const taskInfo = document.createElement('div');
     const title = document.createElement('div');
     title.setAttribute('class','task-title');
     title.textContent = taskTitle;
@@ -80,7 +80,7 @@ function renderDOM(project){
         console.log('link');
         console.log(array);
         for(let i = 0; i < array.length; i++){
-            addTasktoDOM(array[i].getTitle(), array[i].getDescription());
+            addTasktoDOM(array[i].getTitle(), array[i].getDescription(), array[i].getDate());
         };
 
     }
