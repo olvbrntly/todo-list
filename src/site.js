@@ -1,4 +1,6 @@
-function addTasktoDOM(taskTitle, taskDescription, taskStar){
+import {format } from 'date-fns';
+
+function addTasktoDOM(taskTitle, taskDescription, taskDate){
     const taskBox = document.getElementById('tasks');
    
     // make a new task
@@ -20,13 +22,16 @@ function addTasktoDOM(taskTitle, taskDescription, taskStar){
 
     const taskInfo = document.createElement('Div');
     const title = document.createElement('div');
-    title.textContent = `${taskTitle}`;
+    title.setAttribute('class','task-title');
+    title.textContent = taskTitle;
 
     const description =document.createElement('div');
     description.textContent = taskDescription;
 
     // right div elements
     const dueDate = document.createElement('div');
+    dueDate.textContent = taskDate;
+
     const more = document.createElement('select');
     more.classList.add('more');
 
@@ -38,8 +43,6 @@ function addTasktoDOM(taskTitle, taskDescription, taskStar){
     more.appendChild(option1);
     more.appendChild(option2);
 
-    title.setAttribute('class','task-title');
-    dueDate.textContent = 'due!'
     more.textContent = 'more_vert';
     
     taskInfo.appendChild(title);
