@@ -13,6 +13,7 @@ const DOMEvents = () => {
  const allTasks = new Project('allTasks');
  const todaysTasks = new Project('todaysTasks');
  const thisWeeksTasks = new Project('thisWeeksTasks');
+ let currentProject;
 
 //actual events based on id 
 const events =(e) => {
@@ -54,9 +55,10 @@ const events =(e) => {
 
     //All Tasks link on side panel
     if(e.target.id == 'All-Task-Link'){
+        currentProject = allTasks;
         const btn = document.getElementById('add-tasks');
         btn.style.visibility = 'visible'
-        renderDOM(allTasks);
+        renderDOM(currentProject);
     }
 
     //Todays tasks link on side panel

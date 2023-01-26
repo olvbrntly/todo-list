@@ -27,9 +27,16 @@ function addTasktoDOM(taskTitle, taskDescription, taskStar){
 
     // right div elements
     const dueDate = document.createElement('div');
-    const more = document.createElement('button');
-    more.setAttribute('class', 'material-icons');
+    const more = document.createElement('select');
     more.classList.add('more');
+
+    const option1 = document.createElement('option');
+    option1.textContent = 'Edit';
+    const option2 = document.createElement('option');
+    option2.textContent = 'Delete';
+
+    more.appendChild(option1);
+    more.appendChild(option2);
 
     title.setAttribute('class','task-title');
     dueDate.textContent = 'due!'

@@ -158,22 +158,6 @@ body{
     font-size: 15px;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* buttons on the individal task */
 .status{
     border:none;
@@ -191,6 +175,7 @@ body{
     height:51.5vh;
     display:grid;
     grid-template-rows: 80px repeat(auto-fill, 40px);
+
 }
 
 #projects h3{
