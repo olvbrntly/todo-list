@@ -2,7 +2,7 @@
  import { createNewTask} from './todo';
  import Project from './project';
  import {renderDOM, removeAddBtn} from './site';
- import {format, getTimezoneOffset} from 'date-fns';
+ import {format,parseISO} from 'date-fns';
  
  // adds event listeners to whole document to account for dynamically added elements
 const DOMEvents = () => {
@@ -12,6 +12,8 @@ const DOMEvents = () => {
 
  //Project Arrays- should probably be in something but for now they are here
  const allTasks = new Project('allTasks');
+ const todaysTasks = new Project('todaysTasks');
+
  let currentProject;
 
 //actual events based on id 
@@ -29,25 +31,24 @@ const events =(e) => {
         e.preventDefault();
         let title = document.getElementById('task-name').value;
         let description = document.getElementById('task-description').value;
-        let datePicker = document.getElementById('task-date');
-        let date = new Date(datePicker.value);
-        console.log(date.getTimezoneOffset());
-        let newDate = new Date(date + date.getTimezoneOffset());
+        let datePicker = document.getElementById('task-date').value;
+        let date = format(parseISO(datePicker), 'MM/dd/yyyy');
 
-        let finalDate = format(newDate,'MM/dd/yyyy');
 
+        console.log(date)
+    
         if (title == ''){
             alert('please include a title');
             return;
         }
        
-        const newTask = new createNewTask(title, description, finalDate);
+        const newTask = new createNewTask(title, description, date);
         allTasks.addTask(newTask);
        
         closeForm();
         renderDOM(allTasks);
         
-        // if(newTask.getDate() ==='today'){
+        // if(isToday(newTask.getDate()) === true){
         //     todaysTasks.addTask(newTask);
         // }
      
@@ -69,7 +70,7 @@ const events =(e) => {
     //Todays tasks link on side panel
     if(e.target.id == 'Today-Task-Link'){
         removeAddBtn();
-        renderDOM();
+        renderDOM(todaysTasks);
     }
 
     //this weeks task link on side panel
