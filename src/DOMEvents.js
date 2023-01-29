@@ -2,7 +2,7 @@
  import { createNewTask} from './todo';
  import Project from './project';
  import {renderDOM, removeAddBtn} from './site';
- import {format,parseISO} from 'date-fns';
+ import {format,isToday,parseISO, isThisWeek} from 'date-fns';
  
  // adds event listeners to whole document to account for dynamically added elements
 const DOMEvents = () => {
@@ -12,9 +12,8 @@ const DOMEvents = () => {
 
  //Project Arrays- should probably be in something but for now they are here
  const allTasks = new Project('allTasks');
- const todaysTasks = new Project('todaysTasks');
 
- let currentProject;
+ let currentProject= allTasks;
 
 //actual events based on id 
 const events =(e) => {
@@ -43,17 +42,16 @@ const events =(e) => {
         }
        
         const newTask = new createNewTask(title, description, date);
-        allTasks.addTask(newTask);
+        
+        if (currentProject != allTasks){
+            allTasks.addTask(newTask);
+            currentProject.addTAsk(newTask);
+        }else{
+            allTasks.addTask(newTask);
+        }
        
         closeForm();
         renderDOM(allTasks);
-        
-        // if(isToday(newTask.getDate()) === true){
-        //     todaysTasks.addTask(newTask);
-        // }
-     
-        // console.log(todaysTasks.getTasks());
-
         let btn = document.getElementById('add-tasks');
         btn.disabled = false;
    
@@ -68,15 +66,31 @@ const events =(e) => {
     }
 
     //Todays tasks link on side panel
+    //displays all the tasks with due date of today
     if(e.target.id == 'Today-Task-Link'){
-        removeAddBtn();
-        renderDOM(todaysTasks);
+       const todaysTasks = new Project('todaysTasks');
+       (allTasks.tasks).forEach(element => {
+            let thisDate = new Date(element.date);
+            if(isToday(thisDate)==true){
+                todaysTasks.addTask(element);
+            }
+       
+       });
+       renderDOM(todaysTasks);
     }
 
     //this weeks task link on side panel
+    //displays all tasks with due date within the week sun-sat
     if(e.target.id == 'This-Week-Task-Link'){
-        removeAddBtn();
-        renderDOM();
+        const thisWeeksTasks = new Project('thisWeeksTasks');
+        (allTasks.tasks).forEach(element => {
+             let thisDate = new Date(element.date);
+             if(isThisWeek(thisDate)==true){
+                 thisWeeksTasks.addTask(element);
+             }
+        
+        });
+        renderDOM(thisWeeksTasks);
     }
 
     //checks off task - radio btn on side of individual task
