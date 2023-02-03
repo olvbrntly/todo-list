@@ -1,3 +1,4 @@
+//-----FORM FOR ADDING A TASK-------
 function createForm(){
     const taskBox = document.getElementById('tasks');
     //creates form
@@ -8,7 +9,6 @@ function createForm(){
     form.setAttribute('id','form');
 
     //creates title input
-
     const titleDiv = document.createElement('div');
     titleDiv.setAttribute('id','titleDiv');
     titleDiv.setAttribute('class','input-div');
@@ -72,7 +72,6 @@ function createForm(){
     form.appendChild(formSubmit);
 
     taskBox.appendChild(form);
-
 }
 
 function closeForm(){
@@ -82,4 +81,36 @@ function closeForm(){
     console.log('close');
 }
 
-export {createForm, closeForm};
+//----------FORM FOR ADDING A PROJECT-----------
+
+function createCustomProject(){
+    const projects = document.getElementById('projects')
+    const newProjectDiv = document.createElement('div');
+    newProjectDiv.setAttribute('id','new-project-div')
+
+    let customProject = document.createElement('input');
+    customProject.setAttribute('type', 'text');
+    customProject.setAttribute('name', 'custom-project-name');
+    customProject.setAttribute('id', 'custom-project-name');
+
+
+
+
+    let submitProject = document.createElement('submit');
+    submitProject.setAttribute('id','custom-project-submit');
+    submitProject.textContent = 'YES';
+
+    newProjectDiv.appendChild(customProject);
+    newProjectDiv.appendChild(submitProject);
+
+    projects.appendChild(newProjectDiv);
+
+}
+
+function closeProject(){
+    const projects = document.getElementById('projects');
+    const newProjectDiv = document.getElementById('new-project-div');
+    projects.removeChild(newProjectDiv);
+    console.log('close');
+}
+export {createForm, closeForm, createCustomProject, closeProject};
