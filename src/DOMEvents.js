@@ -1,7 +1,7 @@
- import {createForm, closeForm} from './form';
+ import {createForm, closeForm, createCustomProject, closeProject} from './form';
  import { createNewTask} from './todo';
  import Project from './project';
- import {renderDOM, removeAddBtn} from './site';
+ import {renderDOM, renderProjectDiv, removeAddBtn} from './site';
  import {format,isToday,parseISO, isThisWeek} from 'date-fns';
  
  // adds event listeners to whole document to account for dynamically added elements
@@ -12,7 +12,7 @@ const DOMEvents = () => {
 
  //Project Arrays- should probably be in something but for now they are here
  const allTasks = new Project('allTasks');
-
+ let projectArray = [];
  let currentProject= allTasks;
 
 //actual events based on id 
@@ -68,13 +68,13 @@ const events =(e) => {
     //Todays tasks link on side panel
     //displays all the tasks with due date of today
     if(e.target.id == 'Today-Task-Link'){
+        removeAddBtn();
        const todaysTasks = new Project('todaysTasks');
        (allTasks.tasks).forEach(element => {
             let thisDate = new Date(element.date);
             if(isToday(thisDate)==true){
                 todaysTasks.addTask(element);
             }
-       
        });
        renderDOM(todaysTasks);
     }
@@ -82,15 +82,35 @@ const events =(e) => {
     //this weeks task link on side panel
     //displays all tasks with due date within the week sun-sat
     if(e.target.id == 'This-Week-Task-Link'){
+        removeAddBtn();
         const thisWeeksTasks = new Project('thisWeeksTasks');
         (allTasks.tasks).forEach(element => {
              let thisDate = new Date(element.date);
              if(isThisWeek(thisDate)==true){
                  thisWeeksTasks.addTask(element);
              }
-        
         });
         renderDOM(thisWeeksTasks);
+    }
+
+    //add project button - opens a 'form' to create project name
+    if(e.target.id == 'add-project'){
+        createCustomProject();
+        e.target.disabled = true;
+    }
+
+    if(e.target.id == 'custom-project-submit'){
+        let projectName = document.getElementById('custom-project-name').value;
+
+        const newProject = new Project(projectName);
+        projectArray.push(newProject);
+
+        console.log(projectArray);
+        renderProjectDiv(projectArray);
+        closeProject();
+
+        let projectbtn = document.getElementById('add-project');
+        projectbtn.disabled = false;
     }
 
     //checks off task - radio btn on side of individual task
@@ -102,9 +122,6 @@ const events =(e) => {
             e.target.textContent = 'radio_button_unchecked'
         }
     }
-
-    
-
 }
 
  export default DOMEvents
