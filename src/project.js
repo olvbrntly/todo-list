@@ -1,4 +1,3 @@
-import { addTasktoDOM } from "./site";
 export default class Project{
     constructor(name){
         this.name = name
