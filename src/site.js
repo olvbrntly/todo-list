@@ -62,10 +62,18 @@ function addTasktoDOM(taskTitle, taskDescription, taskDate){
 
 };
 
-function clearDOM(){
+function clearTasks(){
     const taskBox = document.getElementById('tasks');
     while(taskBox.lastChild.id != 'add-tasks'){
         taskBox.removeChild(taskBox.lastChild);
+    }
+
+}
+
+function clearProjects(){
+    const projects = document.getElementById('projects');
+    while(projects.lastChild.id != 'add-project'){
+        projects.removeChild(projects.lastChild);
     }
 }
 
@@ -75,16 +83,25 @@ function removeAddBtn(){
 }
 
 function renderDOM(project){
-    clearDOM()
+    clearTasks();
     let array = project.getTasks();
         console.log('link');
         console.log(array);
-        for(let i = 0; i < array.length; i++){
+        for(let i = 0; i < array.length; i++){ 
             addTasktoDOM(array[i].getTitle(), array[i].getDescription(), array[i].getDate());
         };
-
     }
-export {addTasktoDOM, renderDOM, removeAddBtn};
+
+function renderProjectDiv(array){
+    clearProjects();
+    for(let i = 0; i < array.length; i++){
+        const projectDiv = document.getElementById('projects');
+        const newLink = document.createElement('button');
+        newLink.textContent = array[i].getName();
+        projectDiv.appendChild(newLink);
+    }
+}
+export {addTasktoDOM, renderDOM, removeAddBtn, renderProjectDiv};
 
 // move a task to a project
 
