@@ -45,7 +45,7 @@ const events =(e) => {
         
         if (currentProject != allTasks){
             allTasks.addTask(newTask);
-            currentProject.addTAsk(newTask);
+            currentProject.addTask(newTask);
         }else{
             allTasks.addTask(newTask);
         }
@@ -111,6 +111,20 @@ const events =(e) => {
 
         const projectbtn = document.getElementById('add-project');
         projectbtn.disabled = false;
+    }
+
+    if(e.target.classList.contains('createdProjectLink')){
+        const projectName = e.target.textContent;
+        //sets current project = the created project 
+        for(let i = 0; i < projectArray.length; i++){
+            if(projectArray[i].getName() == projectName){
+                currentProject = projectArray[i];
+            }
+        }
+        console.log('current project:')
+        console.log(currentProject);
+        console.log(typeof(currentProject));
+        renderDOM(currentProject);
     }
 
     //checks off task - radio btn on side of individual task
