@@ -109,7 +109,7 @@ const events =(e) => {
         renderProjectDiv(projectArray);
         closeProject();
 
-        let projectbtn = document.getElementById('add-project');
+        const projectbtn = document.getElementById('add-project');
         projectbtn.disabled = false;
     }
 
