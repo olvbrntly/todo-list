@@ -92,10 +92,7 @@ function createCustomProject(){
     customProject.setAttribute('type', 'text');
     customProject.setAttribute('name', 'custom-project-name');
     customProject.setAttribute('id', 'custom-project-name');
-
-
-
-
+    
     let submitProject = document.createElement('submit');
     submitProject.setAttribute('id','custom-project-submit');
     submitProject.textContent = 'YES';
