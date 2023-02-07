@@ -62,6 +62,17 @@ function addTasktoDOM(taskTitle, taskDescription, taskDate){
 
 };
 
+function addProjectToDOM(projectTitle){
+    const projectDiv = document.getElementById('projects');
+    const newProject = document.createElement('div');
+    newProject.setAttribute('class','createdProjects');
+    const newLink = document.createElement('button');
+       
+    newLink.textContent = projectTitle;
+    newProject.appendChild(newLink);
+    projectDiv.appendChild(newProject);
+}
+
 function clearTasks(){
     const taskBox = document.getElementById('tasks');
     while(taskBox.lastChild.id != 'add-tasks'){
@@ -71,11 +82,14 @@ function clearTasks(){
 }
 
 function clearProjects(){
-    const projects = document.getElementById('projects');
-    while(projects.lastChild.id != 'add-project'){
-        projects.removeChild(projects.lastChild);
-    }
+    const projects = document.querySelector('#projects')
+    console.log(projects.children);
+    var createdProjects = document.querySelectorAll('.createdProjects');
+    for (var i = 0; i < createdProjects.length; ++i) {
+        createdProjects[i].remove();
+      } 
 }
+
 
 function removeAddBtn(){
     const btn = document.getElementById('add-tasks');
@@ -85,21 +99,17 @@ function removeAddBtn(){
 function renderDOM(project){
     clearTasks();
     let array = project.getTasks();
-        console.log('link');
-        console.log(array);
-        for(let i = 0; i < array.length; i++){ 
+          for(let i = 0; i < array.length; i++){ 
             addTasktoDOM(array[i].getTitle(), array[i].getDescription(), array[i].getDate());
         };
     }
 
 function renderProjectDiv(array){
     clearProjects();
-    for(let i = 0; i < array.length; i++){
-        const projectDiv = document.getElementById('projects');
-        const newLink = document.createElement('button');
-        newLink.textContent = array[i].getName();
-        projectDiv.appendChild(newLink);
-    }
+    for(let i = 0; i <array.length; i++){
+        addProjectToDOM(array[i].getName());
+    };
+
 }
 export {addTasktoDOM, renderDOM, removeAddBtn, renderProjectDiv};
 
