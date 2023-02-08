@@ -51,7 +51,7 @@ const events =(e) => {
         }
        
         closeForm();
-        renderDOM(allTasks);
+        renderDOM(currentProject);
         let btn = document.getElementById('add-tasks');
         btn.disabled = false;
    
@@ -105,7 +105,6 @@ const events =(e) => {
         const newProject = new Project(projectName);
         projectArray.push(newProject);
 
-        console.log(projectArray);
         renderProjectDiv(projectArray);
         closeProject();
 
@@ -123,7 +122,7 @@ const events =(e) => {
         }
         renderDOM(currentProject);
     }
-    
+
     //checks off task - radio btn on side of individual task
     if(e.target.classList.contains('status')){
         if(e.target.textContent == 'radio_button_unchecked'){
@@ -132,6 +131,17 @@ const events =(e) => {
         else{
             e.target.textContent = 'radio_button_unchecked'
         }
+    }
+
+    //task delete button
+    if(e.target.classList.contains('task-delete')){
+        const taskToDelete = e.target.parentNode.parentNode;
+        let allTasksTasks = allTasks.getTasks();
+        let taskToDeleteIndex = allTasksTasks.findIndex(task => task.getTitle() == taskToDelete.dataset.title);
+        allTasksTasks.splice(taskToDeleteIndex,1);
+        console.log(allTasksTasks);
+        renderDOM(currentProject);
+      
     }
 }
 

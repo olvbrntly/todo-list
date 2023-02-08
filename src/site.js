@@ -8,6 +8,8 @@ function addTasktoDOM(taskTitle, taskDescription, taskDate){
     
     taskContainter.setAttribute('class','task');
     taskContainter.setAttribute('id','task');
+    taskContainter.setAttribute('data-title',`${taskTitle}`);
+
 
     rightDiv.setAttribute('class','task-rightDiv');
     leftDiv.setAttribute('class','task-leftDiv');
@@ -32,7 +34,7 @@ function addTasktoDOM(taskTitle, taskDescription, taskDate){
 
     const more = document.createElement('button');
     more.classList.add('material-icons');
-    more.classList.add('task-delete');
+    more.setAttribute('class','task-delete');
     more.textContent = 'delete';
     
     taskInfo.appendChild(title);
