@@ -121,12 +121,9 @@ const events =(e) => {
                 currentProject = projectArray[i];
             }
         }
-        console.log('current project:')
-        console.log(currentProject);
-        console.log(typeof(currentProject));
         renderDOM(currentProject);
     }
-
+    
     //checks off task - radio btn on side of individual task
     if(e.target.classList.contains('status')){
         if(e.target.textContent == 'radio_button_unchecked'){
