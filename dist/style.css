@@ -184,6 +184,11 @@ body{
     padding-left: 15px;
 }
 
+.currentProject{
+    text-decoration:underline;
+}
+
+/* PROJECT BTN------------------------------------------------ */
 #projects #add-project{
     border-radius: 10px;
     border:none;
@@ -204,6 +209,31 @@ body{
      outline: none;
 }
 
+/* CREATED PROJECTS ------------------------------------------ */
+
+.createdProjects{
+    display:flex;
+    justify-content: left;
+    align-items: center;
+    padding-left: 10px;
+}
+
+.createdProjectLink{
+    border:none;
+    background-color:white;
+    display:flex;
+    flex-direction: column;
+    font-size: 22px; 
+}
+
+.createdProjectLink:hover{
+    text-decoration: underline;
+}
+
+.link:focus{
+    font-weight: bold;
+}
+
 /* FOOTER----------------------------------------------------- */
 
 #footer{
@@ -211,5 +241,6 @@ body{
     height:5vh;
     text-align: center;
     background-color: #c1c1c1;
+    padding-top: 7px;
 }
 
