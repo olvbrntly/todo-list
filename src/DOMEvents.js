@@ -32,6 +32,7 @@ const events =(e) => {
         let description = document.getElementById('task-description').value;
         let datePicker = document.getElementById('task-date').value;
         let date = format(parseISO(datePicker), 'MM/dd/yyyy');
+        let project = currentProject;
 
 
         console.log(date)
@@ -41,15 +42,20 @@ const events =(e) => {
             return;
         }
        
-        const newTask = new createNewTask(title, description, date);
+        const newTask = new createNewTask(title, description, date,project);
         
         if (currentProject != allTasks){
             allTasks.addTask(newTask);
             currentProject.addTask(newTask);
+            newTask.addProjects(allTasks);
+            newTask.addProjects(currentProject);
+
         }else{
             allTasks.addTask(newTask);
+            newTask.addProjects(allTasks);
         }
        
+        console.log(newTask.getProjects())
         closeForm();
         renderDOM(currentProject);
         let btn = document.getElementById('add-tasks');
@@ -141,7 +147,8 @@ const events =(e) => {
         allTasksTasks.splice(taskToDeleteIndex,1);
         console.log(allTasksTasks);
         renderDOM(currentProject);
-      
+
+     
     }
 }
 

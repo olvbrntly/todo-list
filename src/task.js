@@ -1,8 +1,9 @@
 export default class Task{
-    constructor(title, description, date,){
+    constructor(title, description, date, project){
         this.title = title,
         this.description = description,
         this.date = date
+        this.projects = []
     }
 
     //set info functions
@@ -18,6 +19,11 @@ export default class Task{
         this.date = date
     }
 
+    addProjects(project){
+        this.projects.push(project);
+    }
+
+
     //get info functions
     getTitle() {
         return this.title
@@ -29,6 +35,10 @@ export default class Task{
 
     getDate(){
         return this.date
+    }  
+
+    getProjects(){
+        return this.projects
     }  
 
 }
