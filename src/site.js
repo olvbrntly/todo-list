@@ -1,5 +1,3 @@
-import {format } from 'date-fns';
-
 function addTasktoDOM(taskTitle, taskDescription, taskDate){
     const taskBox = document.getElementById('tasks');
    
@@ -64,15 +62,25 @@ function addTasktoDOM(taskTitle, taskDescription, taskDate){
 
 function addProjectToDOM(projectTitle){
     const projectDiv = document.getElementById('projects');
+
     const newProject = document.createElement('div');
     newProject.setAttribute('class','createdProjects');
+
+    const projectIcon = document.createElement('div');
+    projectIcon.setAttribute('class','material-icons');
+    projectIcon.textContent = 'assignment';
+
     const newLink = document.createElement('button');
+    newLink.setAttribute('class','createdProjectLink');
+    newLink.classList.add('link');
        
     newLink.textContent = projectTitle;
+    newProject.appendChild(projectIcon);
     newProject.appendChild(newLink);
     projectDiv.appendChild(newProject);
 }
 
+//works bc its a Nodelist
 function clearTasks(){
     const taskBox = document.getElementById('tasks');
     while(taskBox.lastChild.id != 'add-tasks'){
@@ -81,6 +89,7 @@ function clearTasks(){
 
 }
 
+//works bc project is a htmlcollection (idk why)
 function clearProjects(){
     const projects = document.querySelector('#projects')
     console.log(projects.children);
@@ -112,13 +121,3 @@ function renderProjectDiv(array){
 
 }
 export {addTasktoDOM, renderDOM, removeAddBtn, renderProjectDiv};
-
-// move a task to a project
-
-// show tasks due today 
-
-// show tasks due this week
-
-// shoes tasks that are starred
-
-// show every task
