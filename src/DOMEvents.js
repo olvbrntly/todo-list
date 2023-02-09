@@ -41,6 +41,7 @@ const events =(e) => {
             alert('please include a title');
             return;
         }
+        //if title is the same as another task alert -titles must be different
        
         const newTask = new createNewTask(title, description, date,project);
         
@@ -141,34 +142,23 @@ const events =(e) => {
 
     //task delete button
     if(e.target.classList.contains('task-delete')){
+        //targets task based on DOM element(aware this isnt ideal)
         let allTasksTasks = allTasks.getTasks();
         const taskToDelete = e.target.parentNode.parentNode;
+        //gets index in all task based on title
         let taskToDeleteIndex = allTasksTasks.findIndex(task => task.getTitle() == taskToDelete.dataset.title);
-        //console.log(taskToDeleteIndex);
         let taskProjectsArray = allTasksTasks[taskToDeleteIndex]
-       // console.log(taskProjectsArray)
         let arr = taskProjectsArray.getProjects();
         console.log(arr);
 
         for(let i = 0; i < arr.length; i++){
-            let x = arr[i].getTasks();
-            const y = e.target.parentNode.parentNode;
-            let yIndex = x.findIndex(task => task.getTitle() == y.dataset.title);
-            x.splice(yIndex,1);
+            let projectsTaskisIn = arr[i].getTasks();
+            const parent = e.target.parentNode.parentNode;
+            let parentIndex = projectsTaskisIn.findIndex(task => task.getTitle() == parent.dataset.title);
+            projectsTaskisIn.splice(parentIndex,1);
         }
 
         renderDOM(currentProject);
-
-        // for(let i = 0; i < taskProjectsArray.length; i++){
-        //     let arr = taskProjectsArray[i]
-        //     //console.log(arr);
-        //     for(let j = 0; j < arr.length; j++){
-        //         let num = arr.findIndex(task => task.getTitle() == taskToDelete.dataset.title);
-        //         console.log(num);
-        //     }
-            // console.log(num);
-        // }
-
      
     }
 }
