@@ -141,12 +141,33 @@ const events =(e) => {
 
     //task delete button
     if(e.target.classList.contains('task-delete')){
-        const taskToDelete = e.target.parentNode.parentNode;
         let allTasksTasks = allTasks.getTasks();
+        const taskToDelete = e.target.parentNode.parentNode;
         let taskToDeleteIndex = allTasksTasks.findIndex(task => task.getTitle() == taskToDelete.dataset.title);
-        allTasksTasks.splice(taskToDeleteIndex,1);
-        console.log(allTasksTasks);
+        //console.log(taskToDeleteIndex);
+        let taskProjectsArray = allTasksTasks[taskToDeleteIndex]
+       // console.log(taskProjectsArray)
+        let arr = taskProjectsArray.getProjects();
+        console.log(arr);
+
+        for(let i = 0; i < arr.length; i++){
+            let x = arr[i].getTasks();
+            const y = e.target.parentNode.parentNode;
+            let yIndex = x.findIndex(task => task.getTitle() == y.dataset.title);
+            x.splice(yIndex,1);
+        }
+
         renderDOM(currentProject);
+
+        // for(let i = 0; i < taskProjectsArray.length; i++){
+        //     let arr = taskProjectsArray[i]
+        //     //console.log(arr);
+        //     for(let j = 0; j < arr.length; j++){
+        //         let num = arr.findIndex(task => task.getTitle() == taskToDelete.dataset.title);
+        //         console.log(num);
+        //     }
+            // console.log(num);
+        // }
 
      
     }
